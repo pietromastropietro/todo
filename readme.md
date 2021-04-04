@@ -1,0 +1,1 @@
+This is a ToDo website project for "The Odin Project" course.
