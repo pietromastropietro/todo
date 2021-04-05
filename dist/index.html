@@ -1,12 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <main>
+        <div class="sidebar">
+            <div class="logo"> 
+                <img src="./images/logo.svg" alt="" class='logoImg'>
+                <div class="logoText">DoMore.</div>
+            </div>
+
+            <div class="menu">
+                <ul class="navBar">
+                    <li class="test">
+                        <img src="./images/home.svg" alt="" class="icons">Home</li>
+                    <li> <img src="./images/today.svg" alt="" class='icons'> Today</li>
+                    <li> <img src="./images/week.svg" alt="" class="icons"> This Week</li>
+                </ul>
+                <ul class="projectsBar">
+                    <li>project 1</li>
+                    <li>project 2</li>
+                    <li>project 3</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mainWindow">
+            <div class="infoBar">
+                
+                <input class="search" title="Cerca" type="text" placeholder="Search" autofocus>
+            
+                <!-- <div class="new">New</div> -->
+            </div>
+            <div class="mainView">
+                <div class="sectionTitle">All Todos</div>
+                <div class="todoElement">
+                    <div class="todoTitle">Write your ideas</div>
+                    <div class="todoCheck">O</div>
+                    <div class="todoDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuididunt ut labore et dolore magna aliqua.</div>
+                    <div class="todoDate">12/04/2020</div>
+                    <div class="todoPriority">priority: high</div>
+                </div>
+                <div class="todoElement" id="select">
+                    <div class="todoCheck">O</div>
+                    <div class="todoTitle">Todo element2</div>
+                    <div class="todoDescription" id="select1">Lorem ipsum dolor sit amet, sed do eiuididunt ut labore et dolore magna aliqua.</div>
+                    <div class="todoDate" id="select1">12/04/2020</div>
+                    <div class="todoPriority" id="select1">priority: high</div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
+
 </html>
