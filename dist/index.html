@@ -13,54 +13,76 @@
 </head>
 
 <body>
+
+
+
     <main>
-        <div class="sidebar">
-            <div class="logo"> 
-                <img src="./images/logo.svg" alt="" class='logoImg'>
-                <div class="logoText">DoMore.</div>
-            </div>
-
-            <div class="menu">
-                <ul class="navBar">
-                    <li class="test">
-                        <img src="./images/home.svg" alt="" class="icons">Home</li>
-                    <li> <img src="./images/today.svg" alt="" class='icons'> Today</li>
-                    <li> <img src="./images/week.svg" alt="" class="icons"> This Week</li>
-                </ul>
-                <ul class="projectsBar">
-                    <li>project 1</li>
-                    <li>project 2</li>
-                    <li>project 3</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="mainWindow">
-            <div class="infoBar">
-                
-                <input class="search" title="Cerca" type="text" placeholder="Search" autofocus>
-            
-                <!-- <div class="new">New</div> -->
-            </div>
-            <div class="mainView">
-                <div class="sectionTitle">All Todos</div>
-                <div class="todoElement">
-                    <div class="todoTitle">Write your ideas</div>
-                    <div class="todoCheck">O</div>
-                    <div class="todoDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuididunt ut labore et dolore magna aliqua.</div>
-                    <div class="todoDate">12/04/2020</div>
-                    <div class="todoPriority">priority: high</div>
+        <!-- <div class="overlay"> -->
+            <div class="sidebar">
+                <div class="logo">
+                    <img src="./images/logo.svg" alt="" class='logoImg'>
+                    <div class="logoText">DoMore.</div>
                 </div>
-                <div class="todoElement" id="select">
-                    <div class="todoCheck">O</div>
-                    <div class="todoTitle">Todo element2</div>
-                    <div class="todoDescription" id="select1">Lorem ipsum dolor sit amet, sed do eiuididunt ut labore et dolore magna aliqua.</div>
-                    <div class="todoDate" id="select1">12/04/2020</div>
-                    <div class="todoPriority" id="select1">priority: high</div>
+
+                <div class="menu">
+                    <ul class="navBar">
+                        <li class="test">
+                            <img src="./images/home.svg" alt="" class="icons">Home
+                        </li>
+                        <li> <img src="./images/today.svg" alt="" class='icons'> Today</li>
+                        <li> <img src="./images/week.svg" alt="" class="icons"> This Week</li>
+                    </ul>
+                    <ul class="projectsBar">
+                        <li>project 1</li>
+                        <li>project 2</li>
+                        <li>project 3</li>
+                    </ul>
                 </div>
             </div>
-        </div>
+
+            <div class="mainWindow">
+                <div class="infoBar">
+
+                    <input class="search" title="Cerca" type="text" placeholder="Search">
+
+                    <!-- <div class="new">New</div> -->
+                </div>
+                <div class="mainView">
+                    <div class="sectionTitle">All Todos</div>
+                    <div class="newTodo">
+                        <div class="newBtn">+</div>
+                    </div>
+                    <form class="addBox">
+                        <input type="text" id="title" name="title" value="" placeholder="Title"><br>
+                        <input type="text" id="description" name="description" value="" placeholder="Description"><br>
+                        <input type="text" id="date" name="date" value="" placeholder="Due date"><br>
+                        <input type="text" id="priority" name="priority" value="" placeholder="Priority"><br>
+                        <button type="button" class="submit">Add</button>
+                    </form>
+                    <div class="todoElement">
+                        <div class="todoTitle">Write your ideas</div>
+                        <div class="todoCheck">O</div>
+                        <div class="todoDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiuididunt ut labore et dolore magna aliqua.</div>
+                        <div class="todoDate">12/04/2020</div>
+                        <div class="todoPriority">priority: high</div>
+                    </div>
+                    <div class="todoElement">
+                        <div class="todoCheck">O</div>
+                        <div class="todoTitle">Todo element2</div>
+                        <div class="todoDescription">Lorem ipsum dolor sit amet, sed do eiuididunt ut
+                            labore et
+                            dolore magna aliqua.</div>
+                        <div class="todoDate">12/04/2020</div>
+                        <div class="todoPriority">priority: high</div>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
     </main>
+
+
+    <script src="./main.js"></script>
 </body>
 
 </html>

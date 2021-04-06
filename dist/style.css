@@ -17,16 +17,24 @@ main {
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 26px 50px -12px #3fa09b3d;
     display: flex;
-    width: 70%;
+    /*TEMPORARY, WIDTH SHOULD BE 70%*/
+    width: 90%;
     border-radius: 40px;
     margin-top: 35px;
+}
+.overlay {
+    background-color: rgba(137, 43, 226, 0.233);
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    /* display: none; */
+    display: flex;
 }
 .sidebar {
     display: flex;
     flex-direction: column;
     width: 25%;
     border-right: 1px solid rgba(0, 0, 0, 0.103);
-    /* padding-left: 30px; */
 }
 .logo {
     display: flex;
@@ -57,13 +65,8 @@ li {
     color: rgba(180,180,180);
     font-size: 20px;
     font-weight: 400;
-    /* width: 80%;
-    height: 20px;
-    margin: 10px; */
     display: flex;
     align-items: center;
-    /* border-radius: 10px; */
-    /* padding: 10px; */
     margin-bottom: 20px;
 }
 li:hover {
@@ -72,8 +75,6 @@ li:hover {
     border-right: 3px solid rgb(30, 215, 212);
 }
 .icons {
-    /* width: 18px;
-    height: 18px; */
     margin-right: 15px;
 }
 .projectsBar {
@@ -84,8 +85,6 @@ li:hover {
     display: flex;
     flex-direction: column;
     width: 75%;
-    /* margin: 20px;
-    margin-left: 0; */
 }
 .search {
     outline: none;
@@ -97,13 +96,13 @@ li:hover {
 .infoBar {
     height: 10%;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     padding: 10px;
 }
 .mainView {
     height: 90%;
     padding: 20px;
+    overflow: scroll;
 }
 .sectionTitle {
     color: #161308f1;
@@ -111,12 +110,66 @@ li:hover {
     font-weight: 700;
     margin-bottom: 20px;
 }
+.newTodo {
+    /* display: none; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #161308f1;
+    background-color: rgba(251,251,251); 
+    height: 60px;
+    width: 77%;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+.newBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;    color: #161308f1;
+    background-color: rgb(245, 245, 245);
+    width: 20%;
+    height: 70%;
+    border-radius: 50px;
+}
+.addBox {
+    display: none;
+    /* color: rgb(255, 255, 255);
+    background-color: rgba(67, 236, 208, 0.548); */
+    color: #161308f1;
+    background-color: rgba(251,251,251); 
+    height: 120px;
+    width: 70%;
+    /* display: grid; */
+    grid: 20% 60% 20% / repeat(2, 50%);
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 25px; 
+}
+input {
+    color: #161308f1;
+    background-color: rgba(251,251,251); 
+    /* color: rgb(255, 255, 255);
+    background-color: rgba(67, 236, 208, 0); */
+    width: 100%;
+    border: none;
+    outline: none;
+}
+input:focus {
+    border-bottom: 1px solid black;
+
+}
+
 .todoElement {
-    color: rgb(255, 255, 255);
     /* background-color: rgba(30, 215, 212, 0.582); */
     /* background-color: rgba(253,182,96,255); */
-    background-color: rgba(67, 236, 208, 0.548);
-
+    
+    /* color: rgb(255, 255, 255);
+    background-color: rgba(67, 236, 208, 0.548); */
+    transition: background 0.4s ease;
+    color: #161308f1;
+    color: rgba(190,190,190);
+    background-color: rgba(251,251,251);
 
     height: 120px;
     width: 70%;
@@ -126,41 +179,38 @@ li:hover {
     border-radius: 20px;
     padding: 25px;    
 }
+.todoElement:hover {
+    transition: background 0.4s ease;
+    color: rgb(255, 255, 255);
+    background-color: rgba(67, 236, 208, 0.548);
+}
 .todoTitle,.todoCheck {
     grid-area: 1 / 1 / 1 / 3;
 }
-.todoTitle {
+.todoTitle, #title {
+    color: #161308f1;
     font-size: 20px;
     font-weight: 600;
 }
 .todoCheck {
     justify-self: end;
 }
-.todoDescription {
+.todoDescription, #description {
     grid-area: 2 / 1 / 3 / 3;
     font-size: 18px;
     font-weight: 400;
     margin-top: 15px;
 }
-.todoDate, .todoPriority {
+.todoDate, .todoPriority, #date, #priority {
     grid-row: 3;
     font-size: 18px;
     font-weight: 300;
 }
-.todoPriority {
+.todoPriority, #priority {
     justify-self: end;
 }
 .test {
     color: #161308;
     border-right: 3px solid rgb(30, 215, 212);    
     font-weight: 600;
-
-}
-#select {
-    color: #161308f1;
-    background-color: rgba(251,251,251); 
-}
-#select1 {
-    color: rgba(190,190,190);
-
 }
