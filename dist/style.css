@@ -23,12 +23,19 @@ main {
     margin-top: 35px;
 }
 .overlay {
+    display: none;
     background-color: rgba(137, 43, 226, 0.233);
     position: absolute;
-    width: 90%;
+    height: 99%;
+    width: 100%;
+    z-index: 1;
+
+    /* visibility: hidden;
+    position: absolute;
+    display: flex; */
+    /* width: 90%;
     height: 90%;
-    /* display: none; */
-    display: flex;
+    display: flex; */
 }
 .sidebar {
     display: flex;
@@ -170,7 +177,8 @@ input:focus {
     color: #161308f1;
     color: rgba(190,190,190);
     background-color: rgba(251,251,251);
-
+    position: relative;
+    z-index: 2;
     height: 120px;
     width: 70%;
     display: grid;
@@ -183,6 +191,10 @@ input:focus {
     transition: background 0.4s ease;
     color: rgb(255, 255, 255);
     background-color: rgba(67, 236, 208, 0.548);
+}
+.todoTitle[contenteditable="true"]:focus,.todoDescription[contenteditable="true"]:focus {
+    outline: none;
+    border-bottom: 1px solid black;
 }
 .todoTitle,.todoCheck {
     grid-area: 1 / 1 / 1 / 3;
@@ -208,6 +220,9 @@ input:focus {
 }
 .todoPriority, #priority {
     justify-self: end;
+}
+.submit {
+    grid-row: 3;
 }
 .test {
     color: #161308;

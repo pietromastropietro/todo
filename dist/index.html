@@ -15,9 +15,9 @@
 <body>
 
 
+    <div class="overlay"></div>
 
-    <main>
-        <!-- <div class="overlay"> -->
+        <main>
             <div class="sidebar">
                 <div class="logo">
                     <img src="./images/logo.svg" alt="" class='logoImg'>
@@ -53,33 +53,35 @@
                         <div class="newBtn">+</div>
                     </div>
                     <form class="addBox">
-                        <input type="text" id="title" name="title" value="" placeholder="Title"><br>
-                        <input type="text" id="description" name="description" value="" placeholder="Description"><br>
-                        <input type="text" id="date" name="date" value="" placeholder="Due date"><br>
-                        <input type="text" id="priority" name="priority" value="" placeholder="Priority"><br>
+                        <input type="text" id="title" name="title" placeholder="Title" maxlength="20"><br>
+                        <input type="text" id="description" name="description" placeholder="Description" required><br>
+                        <input type="text" id="date" name="date" placeholder="Due date"><br>
+                        <input type="text" id="priority" name="priority" placeholder="Priority"><br>
                         <button type="button" class="submit">Add</button>
                     </form>
-                    <div class="todoElement">
-                        <div class="todoTitle">Write your ideas</div>
+                    <!-- <div class="todoElement" id="11">
+                        <div contenteditable="true" spellcheck="false" class="todoTitle">Write your ideas</div>
                         <div class="todoCheck">O</div>
-                        <div class="todoDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        <div contenteditable="true" spellcheck="false" class="todoDescription">Lorem ipsum dolor sit
+                            amet, consectetur
+                            adipiscing elit, sed do
                             eiuididunt ut labore et dolore magna aliqua.</div>
                         <div class="todoDate">12/04/2020</div>
                         <div class="todoPriority">priority: high</div>
                     </div>
-                    <div class="todoElement">
+                    <div class="todoElement" id="22">
                         <div class="todoCheck">O</div>
-                        <div class="todoTitle">Todo element2</div>
-                        <div class="todoDescription">Lorem ipsum dolor sit amet, sed do eiuididunt ut
+                        <div contenteditable="true" spellcheck="false" class="todoTitle">Todo element2</div>
+                        <div contenteditable="true" spellcheck="false" class="todoDescription">Lorem ipsum dolor sit amet, sed do eiuididunt ut
                             labore et
                             dolore magna aliqua.</div>
                         <div class="todoDate">12/04/2020</div>
                         <div class="todoPriority">priority: high</div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
-        <!-- </div> -->
-    </main>
+        </main>
+    <!-- </div> -->
 
 
     <script src="./main.js"></script>
