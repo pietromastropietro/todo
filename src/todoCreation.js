@@ -1,3 +1,4 @@
+import { parseISO, format } from 'date-fns';
 import { todoDatabase } from './global';
 import addEditEvents from './todoEdit';
 
@@ -63,6 +64,7 @@ function addNewTodo() {
     const newTodoDiv = createNewTodoDiv(newTodoObj);
     mainView.appendChild(newTodoDiv);
     addEditEvents();
+    console.table(todoDatabase);
 }
 
 // takes the form data values and returns a 'todo' object
@@ -70,13 +72,14 @@ function getFormData() {
     title = document.getElementById('title').value;
     description = document.getElementById('description').value;
     date = document.getElementById('date').value;
+    let formattedDate = format(parseISO(date), 'dd/MM/yyyy');
     priority = document.getElementById('priority').value;
 
     todoId++;
 
     todoId2 += todoId;
 
-    const todoObj = todoObjFactory(title, description, date, priority, todoId2);
+    const todoObj = todoObjFactory(title, description, formattedDate, priority, todoId2);
     todoId2 = 'n';
     return todoObj;
 }
@@ -90,8 +93,8 @@ function createNewTodoDiv(newTodoObj) {
 
     const todoTitle = document.createElement('div');
     todoTitle.classList = 'todoTitle';
-    todoTitle.contentEditable = 'true';
-    todoTitle.spellcheck = 'false';
+    todoTitle.contentEditable = true;
+    todoTitle.spellcheck = false;
     todoTitle.textContent = newTodoObj.title;
 
     const todoCheck = document.createElement('div');
@@ -107,6 +110,10 @@ function createNewTodoDiv(newTodoObj) {
     todoDate.classList = 'todoDate';
     todoDate.textContent = newTodoObj.date;
 
+    const todoDeleteBtn = document.createElement('div');
+    todoDeleteBtn.classList = 'todoDeleteBtn';
+    todoDeleteBtn.textContent = 'Delete';
+
     const todoPriority = document.createElement('div');
     todoPriority.classList = 'todoPriority';
     todoPriority.textContent = newTodoObj.priority;
@@ -115,25 +122,10 @@ function createNewTodoDiv(newTodoObj) {
     todoElement.appendChild(todoCheck);
     todoElement.appendChild(todoDescription);
     todoElement.appendChild(todoDate);
+    todoElement.appendChild(todoDeleteBtn);
     todoElement.appendChild(todoPriority);
 
     return todoElement;
 }
-
-// function editEvents() {
-//     const editTitle = document.querySelectorAll('.todoTitle');
-//     editTitle.forEach((title) => {
-//         title.addEventListener('click', editTodo);
-//     });
-
-//     const editDescription = document.querySelectorAll('.todoDescription');
-//     editDescription.forEach((description) => {
-//         description.addEventListener('click', editTodo);
-//     });
-// }
-
-// function editTodo(e) {
-//     console.log(e.target.parentElement.id);
-// }
 
 export { createNewTodo, firstLoad }

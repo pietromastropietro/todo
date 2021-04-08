@@ -24,18 +24,11 @@ main {
 }
 .overlay {
     display: none;
-    background-color: rgba(137, 43, 226, 0.233);
+    background-color: rgba(137, 43, 226, 0.26);
     position: absolute;
     height: 99%;
     width: 100%;
     z-index: 1;
-
-    /* visibility: hidden;
-    position: absolute;
-    display: flex; */
-    /* width: 90%;
-    height: 90%;
-    display: flex; */
 }
 .sidebar {
     display: flex;
@@ -178,7 +171,7 @@ input:focus {
     color: rgba(190,190,190);
     background-color: rgba(251,251,251);
     position: relative;
-    z-index: 2;
+    /* z-index: 2; */
     height: 120px;
     width: 70%;
     display: grid;
@@ -186,6 +179,10 @@ input:focus {
     margin-bottom: 10px;
     border-radius: 20px;
     padding: 25px;    
+}
+.edit {
+    z-index: 2;
+
 }
 .todoElement:hover {
     transition: background 0.4s ease;
