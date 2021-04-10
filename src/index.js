@@ -1,29 +1,19 @@
-import { createNewTodo, firstLoad } from './todoCreation';
+import { todoDatabase } from './global';
+import { todo, newTodoDiv } from './todoModule';
 
-firstLoad();
+// TODO
+// add an overlay for the new todo form, so i can remove the add button.
+// when the user clicks on the overlay the new todo is automatically created (if not empty)
+// like what happens with the edit form
 
-const newTodoBtn = document.querySelector('.newBtn');
-newTodoBtn.addEventListener('click', createNewTodo);
+(function firstLoad() {
+    document.querySelector('.newBtn').addEventListener('click', todo.create);
+    document.querySelector('.submit').addEventListener('click', todo.submit);
+    // ... other eventlisteners will follow (searchbar, today/this week sections etc)
 
-// function addEvents() {
-//     const editTitle = document.querySelectorAll('.todoTitle');
-//     editTitle.forEach((title) => {
-//         title.addEventListener('click', editTodo);
-//     });
+    // set today's date as default for any new todo
+    document.querySelector('#date').valueAsDate = new Date();
 
-//     const editDescription = document.querySelectorAll('.todoDescription');
-//     editDescription.forEach((description) => {
-//         description.addEventListener('click', editTodo);
-//     });
-
-//     const deleteBtn = document.querySelectorAll('.todoDeleteBtn');
-//     deleteBtn.forEach((btn) => {
-//         btn.addEventListener('click', deleteTodo);
-//     });
-
-//     const editDate = document.querySelectorAll('.todoDate');
-//     editDate.forEach((date) => {
-//         date.addEventListener('click', editTodo);
-//     });
-
-// }
+    newTodoDiv(todoDatabase[0]);
+    newTodoDiv(todoDatabase[1]);
+})();

@@ -30,6 +30,14 @@ main {
     width: 100%;
     z-index: 1;
 }
+.overlayAdd {
+    display: none;
+    background-color: rgba(43, 226, 67, 0.26);
+    position: absolute;
+    height: 99%;
+    width: 100%;
+    z-index: 1;
+}
 .sidebar {
     display: flex;
     flex-direction: column;

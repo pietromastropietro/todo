@@ -9,79 +9,72 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <title>DoMore.</title>
 </head>
 
 <body>
-
-
     <div class="overlay"></div>
-
-        <main>
-            <div class="sidebar">
-                <div class="logo">
-                    <img src="./images/logo.svg" alt="" class='logoImg'>
-                    <div class="logoText">DoMore.</div>
-                </div>
-
-                <div class="menu">
-                    <ul class="navBar">
-                        <li class="test">
-                            <img src="./images/home.svg" alt="" class="icons">Home
-                        </li>
-                        <li> <img src="./images/today.svg" alt="" class='icons'> Today</li>
-                        <li> <img src="./images/week.svg" alt="" class="icons"> This Week</li>
-                    </ul>
-                    <ul class="projectsBar">
-                        <li>project 1</li>
-                        <li>project 2</li>
-                        <li>project 3</li>
-                    </ul>
-                </div>
+    <main>
+        <div class="sidebar">
+            <div class="logo">
+                <img src="./images/logo.svg" alt="" class='logoImg'>
+                <div class="logoText">DoMore.</div>
             </div>
 
-            <div class="mainWindow">
-                <div class="infoBar">
+            <div class="menu">
+                <ul class="navBar">
+                    <li class="test">
+                        <img src="./images/home.svg" alt="" class="icons">Home
+                    </li>
+                    <li> <img src="./images/today.svg" alt="" class='icons'> Today</li>
+                    <li> <img src="./images/week.svg" alt="" class="icons"> This Week</li>
+                </ul>
+                <ul class="projectsBar">
+                    <li>project 1</li>
+                    <li>project 2</li>
+                    <li>project 3</li>
+                </ul>
+            </div>
+        </div>
 
-                    <input class="search" title="Cerca" type="text" placeholder="Search">
-
-                    <!-- <div class="new">New</div> -->
+        <div class="mainWindow">
+            <div class="infoBar">
+                <input class="search" title="Cerca" type="text" placeholder="Search">
+                <!-- <div class="new">New</div> -->
+            </div>
+            <div class="mainView">
+                <div class="sectionTitle">All Todos</div>
+                <div class="newTodo">
+                    <div class="newBtn">+</div>
                 </div>
-                <div class="mainView">
-                    <div class="sectionTitle">All Todos</div>
-                    <div class="newTodo">
-                        <div class="newBtn">+</div>
-                    </div>
-                    <form class="addBox">
-                        <input type="text" id="title" name="title" placeholder="Title" maxlength="20"><br>
-                        <input type="text" id="description" name="description" placeholder="Description" required><br>
-                        <input type="date" id="date" name="date" placeholder="Due date"><br>
-                        <input type="text" id="priority" name="priority" placeholder="Priority"><br>
-                        <button type="button" class="submit">Add</button>
-                    </form>
-                    <!-- <div class="todoElement" id="11">
+                <form class="addBox">
+                    <input type="text" id="title" name="title" placeholder="Title" maxlength="20"><br>
+                    <input type="text" id="description" name="description" placeholder="Description" required><br>
+                    <input type="date" id="date" name="date"><br>
+                    <!-- <input type="text" id="priority" name="priority" placeholder="Priority"><br> -->
+
+                    <label for="priority">Priority</label>
+                    <select id="priority" name="priority">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                    <button type="button" class="submit">Add</button>
+                </form>
+                <!-- <div class="todoElement" id="11">
                         <div contenteditable="true" spellcheck="false" class="todoTitle">Write your ideas</div>
                         <div class="todoCheck">O</div>
-                        <div contenteditable="true" spellcheck="false" class="todoDescription">Lorem ipsum dolor sit
-                            amet, consectetur
-                            adipiscing elit, sed do
-                            eiuididunt ut labore et dolore magna aliqua.</div>
+                        <div contenteditable="true" spellcheck="false" class="todoDescription">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
+                            doeiuididunt ut labore et dolore magna aliqua.
+                        </div>
                         <div class="todoDate">12/04/2020</div>
                         <div class="todoPriority">priority: high</div>
                     </div> -->
-                    <!-- <div class="todoElement" id="22">
-                        <div class="todoCheck">O</div>
-                        <div contenteditable="true" spellcheck="false" class="todoTitle">Todo</div>
-                        <div contenteditable="true" spellcheck="false" class="todoDescription">Lorem ipsum dolor sit amet, sed do eiuididunt ut
-                            labore et
-                            dolore magna aliqua.</div>
-                        <input type="date" id="date" name="date" placeholder="Due date"><br>
-
-                        <div class="todoPriority">priority: high</div>
-                    </div>  -->
-                </div>
             </div>
-        </main>
+        </div>
+    </main>
 
     <script src="./main.js"></script>
 </body>

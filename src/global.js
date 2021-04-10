@@ -1,3 +1,5 @@
+import { todo } from './todoModule';
+
 const todoDatabase = [
     {
         title: 'Write your idea',
@@ -15,4 +17,14 @@ const todoDatabase = [
     },
 ];
 
-export { todoDatabase };
+const inputForm = document.querySelector('.addBox');
+
+const overlayDiv = document.querySelector('.overlay');
+overlayDiv.addEventListener('click', todo.save);
+
+const todoObjFactory = (title, description, date, priority, todoId) => {
+    todoId = `n${todoId}`;
+    return { title, description, date, priority, todoId };
+};
+
+export { todoDatabase, inputForm, todoObjFactory, overlayDiv };
