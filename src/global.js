@@ -27,4 +27,8 @@ const todoObjFactory = (title, description, date, priority, todoId) => {
     return { title, description, date, priority, todoId };
 };
 
-export { todoDatabase, inputForm, todoObjFactory, overlayDiv };
+const todayPage = document.querySelector('.todayPage');
+
+const mainViewCenter = document.querySelector('.mainViewCenter');
+
+export { todoDatabase, inputForm, todoObjFactory, overlayDiv, todayPage, mainViewCenter };

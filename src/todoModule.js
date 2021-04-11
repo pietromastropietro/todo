@@ -1,6 +1,6 @@
 import { parseISO, format, parse } from 'date-fns';
 import { overlay, form, editClass } from './otherModules';
-import { todoDatabase } from './global';
+import { todoDatabase, mainViewCenter } from './global';
 
 const todoModule = () => {
     let todoIdEdit;
@@ -14,12 +14,13 @@ const todoModule = () => {
     const submit = () => {
         // create a new object with the form data submitted and returned by getData
         const newTodo = form.getData();
+        console.log(newTodo);
 
         // Pushes it into the database
         todoDatabase.push(newTodo);
 
         // Creates the div element to show the new todo
-        newTodoDiv(newTodo);
+        newTodoDiv(mainViewCenter, newTodo);
 
         // Hides the form 
         form.hide();
@@ -43,9 +44,6 @@ const todoModule = () => {
         overlay.show();
         editClass.on(todoIdEdit);
 
-        // activates the date selector
-        _dateInputOn();
-        _priorityInputOn();
     };
 
     // clicking on the overlay calls this function
@@ -104,7 +102,9 @@ const todoModule = () => {
 
     // TODO
     // fix date formats to simplify these two functions below and the code in "form.getData"
-    const _dateInputOn = () => {
+    const dateInputOn = (e) => {
+        todo.edit(e);
+
         const oldElement = document.querySelector(`#${todoIdEdit} > .todoDate`);
         const oldElementValue = format(parse(oldElement.innerHTML, 'dd/MM/yyyy', new Date()), 'yyyy-MM-dd');
 
@@ -113,26 +113,33 @@ const todoModule = () => {
         newElement.classList = 'todoDate';
         newElement.value = oldElementValue;
         oldElement.replaceWith(newElement);
-    }
+
+    };
 
     const _dateInputOff = () => {
         const oldElement = document.querySelector(`#${todoIdEdit} > .todoDate`);
-        const oldElementValue = format(parseISO(oldElement.value), 'dd/MM/yyyy');
 
-        const newElement = document.createElement('div');
-        newElement.classList = 'todoDate';
-        newElement.innerHTML = oldElementValue;
-        oldElement.replaceWith(newElement);
+        // if the element is a 'input' it means that the date has changed
+        if (oldElement.tagName == 'INPUT') {
+            const oldElementValue = format(parseISO(oldElement.value), 'dd/MM/yyyy');
 
-        return oldElementValue;
+            const newElement = document.createElement('div');
+            newElement.classList = 'todoDate';
+            newElement.innerHTML = oldElementValue;
+            oldElement.replaceWith(newElement);
+
+            editEvents();
+
+            return oldElementValue;
+        } else {
+            // else do nothing and just return the old date value
+            return oldElement.innerHTML;
+        }
     };
 
-    // TODO
-    // fix the fact that the priority value resets to the first on the list (high) when
-    // editing a todo. this is a problem bcs it changes the previous priority and the user
-    // may forget to modify to the previous state. one way to fix it is to toggle the
-    //ability to modify the priority only when clicking on the actual priority element.
-    const _priorityInputOn = () => {
+    const priorityInputOn = (e) => {
+        todo.edit(e);
+
         const oldElement = document.querySelector(`#${todoIdEdit} > .todoPriority`);
 
         const newElement = document.createElement('select');
@@ -152,6 +159,14 @@ const todoModule = () => {
         option3.value = 'low';
         option3.innerHTML = 'Low';
 
+        if (oldElement.innerHTML == 'high') {
+            option1.selected = true;
+        } else if (oldElement.innerHTML == 'medium') {
+            option2.selected = true;
+        } else {
+            option3.selected = true;
+        };
+
         newElement.appendChild(option1);
         newElement.appendChild(option2);
         newElement.appendChild(option3);
@@ -162,28 +177,30 @@ const todoModule = () => {
     const _priorityInputOff = () => {
         const oldElement = document.querySelector(`#${todoIdEdit} > .todoPriority`);
 
-        const newElement = document.createElement('div');
-        newElement.classList = 'todoPriority';
-        newElement.innerHTML = oldElement.value;
-        oldElement.replaceWith(newElement);
+        if (oldElement.tagName == 'SELECT') {
 
-        console.log(newElement.innerHTML);
+            const newElement = document.createElement('div');
+            newElement.classList = 'todoPriority';
+            newElement.innerHTML = oldElement.value;
+            oldElement.replaceWith(newElement);
 
-        return newElement.innerHTML;
+            editEvents();
+
+            return newElement.innerHTML;
+        } else {
+            return oldElement.innerHTML;
+        }
     };
 
-    return { create, submit, edit, save, deletee };
+    return { create, submit, edit, save, deletee, dateInputOn, priorityInputOn };
 };
 const todo = todoModule();
 
-function newTodoDiv(newTodoObj) {
-    // TEMP
-    const mainView = document.querySelector('.mainView');
-
+function newTodoDiv(parent, newTodoObj) {
+    
     const todoElement = document.createElement('div');
     todoElement.classList = 'todoElement';
     todoElement.setAttribute('id', `${newTodoObj.todoId}`)
-
 
     const todoTitle = document.createElement('div');
     todoTitle.classList = 'todoTitle';
@@ -191,8 +208,8 @@ function newTodoDiv(newTodoObj) {
     todoTitle.spellcheck = false;
     todoTitle.textContent = newTodoObj.title;
 
-    const todoCheck = document.createElement('div');
-    todoCheck.classList = 'todoCheck';
+    // const todoCheck = document.createElement('div');
+    // todoCheck.classList = 'todoCheck';
 
     const todoDescription = document.createElement('div');
     todoDescription.classList = 'todoDescription';
@@ -213,19 +230,29 @@ function newTodoDiv(newTodoObj) {
     todoPriority.textContent = newTodoObj.priority;
 
     todoElement.appendChild(todoTitle);
-    todoElement.appendChild(todoCheck);
+    // todoElement.appendChild(todoCheck);
     todoElement.appendChild(todoDescription);
     todoElement.appendChild(todoDate);
     todoElement.appendChild(todoDeleteBtn);
     todoElement.appendChild(todoPriority);
 
-    mainView.appendChild(todoElement);
+    parent.prepend(todoElement);
+
     editEvents();
 }
 
 function editEvents() {
-    document.querySelectorAll('.todoTitle, .todoDescription, .todoDate').forEach(item => {
+
+    document.querySelectorAll('.todoTitle, .todoDescription').forEach(item => {
         item.addEventListener('click', todo.edit);
+    });
+
+    document.querySelectorAll('.todoDate').forEach(item => {
+        item.addEventListener('click', todo.dateInputOn);
+    });
+
+    document.querySelectorAll('.todoPriority').forEach(item => {
+        item.addEventListener('click', todo.priorityInputOn);
     });
 
     document.querySelectorAll('.todoDeleteBtn').forEach(itemm => {
