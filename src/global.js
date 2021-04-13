@@ -4,14 +4,14 @@ const todoDatabase = [
     {
         title: 'Write your idea',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuididunt ut labore et dolore magna aliqua.',
-        date: '12/04/2021',
+        date: '11/04/2021',
         priority: 'high',
         todoId: 'n0',
     },
     {
         title: 'todo elem 2',
         description: 'Lorem ipsum dolor sit amet elit, sed do eiuididunt ut labore et dolore magna aliqua.',
-        date: '16/04/2021',
+        date: '13/04/2021',
         priority: 'low',
         todoId: 'n1',
     },
@@ -27,8 +27,9 @@ const todoObjFactory = (title, description, date, priority, todoId) => {
     return { title, description, date, priority, todoId };
 };
 
-const todayPageDiv = document.querySelector('.todayPage');
-
 const mainViewCenter = document.querySelector('.mainViewCenter');
+const todayPageDiv = document.querySelector('.todayPage');
+const weekPageDiv = document.querySelector('.weekPage');
 
-export { todoDatabase, inputForm, todoObjFactory, overlayDiv, todayPageDiv, mainViewCenter };
+
+export { todoDatabase, inputForm, todoObjFactory, overlayDiv, todayPageDiv, mainViewCenter, weekPageDiv };

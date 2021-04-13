@@ -124,7 +124,7 @@ li:hover {
     align-items: center;
     padding: 10px;
 }
-/* TODO fix the overflow! */
+/* TODO fix the overflow and scrolling! */
 .mainView {
     display: unset;
     height: 90%;
@@ -141,6 +141,13 @@ li:hover {
     background: rgba(136, 136, 136, 0.514);
 }
 .todayPage {
+    display: none;
+
+    height: 90%;
+    padding: 20px;
+    overflow: hidden;
+}
+.weekPage {
     display: none;
 
     height: 90%;

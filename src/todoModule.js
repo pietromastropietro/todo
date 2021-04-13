@@ -14,7 +14,6 @@ const todoModule = () => {
     const submit = () => {
         // create a new object with the form data submitted and returned by getData
         const newTodo = form.getData();
-        console.log(newTodo);
 
         // Pushes it into the database
         todoDatabase.push(newTodo);
