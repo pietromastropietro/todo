@@ -40,6 +40,7 @@ const todoModule = () => {
 
         // gets the id of the todo to edit
         todoIdEdit = e.srcElement.parentElement.id;
+        console.log(todoIdEdit);
 
         overlay.show();
         editClass.on(todoIdEdit);

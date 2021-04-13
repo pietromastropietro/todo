@@ -1,6 +1,7 @@
-import { todoDatabase, mainViewCenter, todayPage } from './global';
+import { todoDatabase, mainViewCenter, todayPageDiv } from './global';
 import { todo, newTodoDiv } from './todoModule';
-import todayPageLoad from './todayPage';
+//import todayPageLoad from './todayPage';
+import { load } from './otherModules';
 
 // TODO
 // add an overlay for the new todo form, so i can remove the add button.
@@ -10,40 +11,16 @@ import todayPageLoad from './todayPage';
 function firstLoad() {
     document.querySelector('.newBtn').addEventListener('click', todo.create);
     document.querySelector('.submit').addEventListener('click', todo.submit);
-    document.querySelector('.todayBtn').addEventListener('click', load.today);
-    document.querySelector('.homeBtn').addEventListener('click', load.home);
+
+    document.querySelector('.todayBtn').addEventListener('click', load.todayPage);
+    document.querySelector('.homeBtn').addEventListener('click', load.homePage);
     // ... other eventlisteners will follow (searchbar, today/this week sections etc)
 
     // set today's date as default for any new todo
     document.querySelector('#date').valueAsDate = new Date();
 
-    todoDatabase.forEach(item => {
-        newTodoDiv(mainViewCenter, item);
-    });
+    load.homePage();
+    load.weekPage();
 };
-
-const loadModule = () => {
-    const home = () => {
-        todayPage.style.display = 'none';
-
-        const mainView = document.querySelector('.mainView');
-        mainView.style.display = 'unset';
-    };
-    const today = () => {
-        // hide the previous page content
-        const mainView = document.querySelector('.mainView');
-        mainView.style.display = 'none';
-       
-        todayPage.innerHTML = '';
-        todayPage.style.display = 'unset';
-
-        // create the todos from the database
-        todoDatabase.forEach(item => {
-            newTodoDiv(todayPage, item);
-        });
-    };
-    return { today, home };
-};
-const load = loadModule();
 
 firstLoad();
