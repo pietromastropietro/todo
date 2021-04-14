@@ -1,23 +1,27 @@
-import { parseISO, format, startOfWeek, addDays } from 'date-fns';
+import { parseISO, format, startOfWeek, addDays, add } from 'date-fns';
 import { nn } from 'date-fns/locale'; // what is this? i didnt add it
-import { inputForm, todoObjFactory, overlayDiv, mainViewCenter, todayPageDiv, todoDatabase, weekPageDiv } from './global';
+import { projectDatabase, inputForm, todoObjFactory, overlayDiv, mainViewCenter, todayPageDiv, todoDatabase, weekPageDiv, projectPageDiv } from './global';
 import { todo, newTodoDiv } from './todoModule';
+import { newProjectLi } from './projectModule';
+import { saveToLS, getFromLS } from './localstorage';
+
 
 const loadModule = () => {
     const homePage = () => {
         // deletes the previous page content and shows the current page
-        _clear([todayPageDiv, weekPageDiv]);
+        _clear([todayPageDiv, weekPageDiv, projectPageDiv]);
         _display(mainViewCenter);
-
 
         // create the todos from the database
         todoDatabase.forEach(item => {
             newTodoDiv(mainViewCenter, item);
         });
+
+        // creates the projects from the database
     };
     const todayPage = () => {
         // deletes the previous page content and shows the current page
-        _clear([mainViewCenter, weekPageDiv]);
+        _clear([mainViewCenter, weekPageDiv, projectPageDiv]);
         _display(todayPageDiv);
 
         // gets the current date
@@ -32,7 +36,7 @@ const loadModule = () => {
     };
     const weekPage = () => {
         // deletes the previous page content and shows the current page
-        _clear([mainViewCenter, todayPageDiv]);
+        _clear([mainViewCenter, todayPageDiv, projectPageDiv]);
         _display(weekPageDiv);
 
         // gets the current week
@@ -48,6 +52,21 @@ const loadModule = () => {
             };
         };
     };
+    const projectPage = (e) => {
+        // deletes the previous page content and shows the current page
+        _clear([mainViewCenter, todayPageDiv, weekPageDiv]);
+        _display(projectPageDiv);
+
+        // get the right project todo to show
+        const project = e.srcElement.className;
+
+        // creates only the todos with the right project property
+        todoDatabase.forEach(item => {
+            if (item.project === project) {
+                newTodoDiv(projectPageDiv, item);
+            };
+        });
+    }
     const _clear = (arr) => {
         for (let items of arr) {
             items.innerHTML = '';
@@ -58,7 +77,7 @@ const loadModule = () => {
         element.innerHTML = '';
         element.style.display = 'unset';
     };
-    return { todayPage, homePage, weekPage };
+    return { todayPage, homePage, weekPage, projectPage };
 };
 const load = loadModule();
 
@@ -84,6 +103,7 @@ const formModule = () => {
             document.getElementById('description').value,
             format(parseISO(document.getElementById('date').value), 'dd/MM/yyyy'),
             document.getElementById('priority').value,
+            document.getElementById('project').value,
             todoId++,
         );
         return todoObj;

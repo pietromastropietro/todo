@@ -1,6 +1,6 @@
 import { parseISO, format, parse } from 'date-fns';
 import { overlay, form, editClass } from './otherModules';
-import { todoDatabase, mainViewCenter } from './global';
+import { todoDatabase, mainViewCenter, projectDatabase } from './global';
 
 const todoModule = () => {
     let todoIdEdit;
@@ -8,6 +8,8 @@ const todoModule = () => {
     const create = (e) => {
         // Shows the form to create a new todo
         form.show();
+
+        // TODO i have to add the overlay and editClass as i do on the editing
     };
 
     // Function called when the user presses the Add form button
@@ -43,7 +45,6 @@ const todoModule = () => {
 
         overlay.show();
         editClass.on(todoIdEdit);
-
     };
 
     // clicking on the overlay calls this function
@@ -59,6 +60,8 @@ const todoModule = () => {
 
         const newPriority = _priorityInputOff();
 
+        const newProject = _saveProjectChoise();
+
         // get the index of the todo to edit
         const index = _getIndex(todoIdEdit);
 
@@ -66,6 +69,7 @@ const todoModule = () => {
         todoDatabase[index].title = newTitle.innerHTML;
         todoDatabase[index].description = newDescription.innerHTML;
         todoDatabase[index].date = newDate;
+        todoDatabase[index].project = newProject;
         todoDatabase[index].priority = newPriority;
 
         // temp
@@ -191,13 +195,52 @@ const todoModule = () => {
             return oldElement.innerHTML;
         }
     };
+    const chooseProject = (e) => {
+        todo.edit(e);
 
-    return { create, submit, edit, save, deletee, dateInputOn, priorityInputOn };
+        const oldElement = document.querySelector(`#${todoIdEdit} > .todoProject`);
+
+        const newElement = document.createElement('select');
+        newElement.id = 'project';
+        newElement.classList = 'todoProject';
+        newElement.name = 'project';
+
+        // TODO copy this for the priority function if possible
+        for (let item of projectDatabase) {
+            const option = document.createElement('option');
+            option.value = item;
+            option.innerHTML = item;
+
+            if (item == oldElement.innerHTML) {
+                option.selected = true;
+            };
+
+            newElement.appendChild(option);
+        };
+        oldElement.replaceWith(newElement);
+    };
+    const _saveProjectChoise = () => {
+        const oldElement = document.querySelector(`#${todoIdEdit} > .todoProject`);
+
+        if (oldElement.tagName == 'SELECT') {
+            const newElement = document.createElement('div');
+            newElement.classList = 'todoProject';
+            newElement.innerHTML = oldElement.value;
+            oldElement.replaceWith(newElement);
+
+            editEvents();
+            return newElement.innerHTML;
+        } else {
+            return oldElement.innerHTML;
+        }
+    };
+
+    return { create, submit, edit, save, deletee, dateInputOn, priorityInputOn, chooseProject };
 };
 const todo = todoModule();
 
 function newTodoDiv(parent, newTodoObj) {
-    
+
     const todoElement = document.createElement('div');
     todoElement.classList = 'todoElement';
     todoElement.setAttribute('id', `${newTodoObj.todoId}`)
@@ -229,14 +272,22 @@ function newTodoDiv(parent, newTodoObj) {
     todoPriority.classList = 'todoPriority';
     todoPriority.textContent = newTodoObj.priority;
 
+    const todoProject = document.createElement('div');
+    todoProject.classList = 'todoProject';
+    todoProject.textContent = newTodoObj.project;
+
     todoElement.appendChild(todoTitle);
     // todoElement.appendChild(todoCheck);
     todoElement.appendChild(todoDescription);
     todoElement.appendChild(todoDate);
     todoElement.appendChild(todoDeleteBtn);
+    todoElement.appendChild(todoProject);
     todoElement.appendChild(todoPriority);
 
     parent.prepend(todoElement);
+
+    //temp
+    console.table(todoDatabase);
 
     editEvents();
 }
@@ -249,6 +300,10 @@ function editEvents() {
 
     document.querySelectorAll('.todoDate').forEach(item => {
         item.addEventListener('click', todo.dateInputOn);
+    });
+
+    document.querySelectorAll('.todoProject').forEach(item => {
+        item.addEventListener('click', todo.chooseProject);
     });
 
     document.querySelectorAll('.todoPriority').forEach(item => {

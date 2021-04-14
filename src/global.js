@@ -6,6 +6,7 @@ const todoDatabase = [
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuididunt ut labore et dolore magna aliqua.',
         date: '11/04/2021',
         priority: 'high',
+        project: 'Work',
         todoId: 'n0',
     },
     {
@@ -13,23 +14,26 @@ const todoDatabase = [
         description: 'Lorem ipsum dolor sit amet elit, sed do eiuididunt ut labore et dolore magna aliqua.',
         date: '13/04/2021',
         priority: 'low',
+        project: 'Gym',
         todoId: 'n1',
     },
 ];
+
+const projectDatabase = ['Work', 'Gym'];
 
 const inputForm = document.querySelector('.addBox');
 
 const overlayDiv = document.querySelector('.overlay');
 overlayDiv.addEventListener('click', todo.save);
 
-const todoObjFactory = (title, description, date, priority, todoId) => {
+const todoObjFactory = (title, description, date, priority, project, todoId) => {
     todoId = `n${todoId}`;
-    return { title, description, date, priority, todoId };
+    return { title, description, date, priority, project, todoId };
 };
 
 const mainViewCenter = document.querySelector('.mainViewCenter');
 const todayPageDiv = document.querySelector('.todayPage');
 const weekPageDiv = document.querySelector('.weekPage');
+const projectPageDiv = document.querySelector('.projectPage');
 
-
-export { todoDatabase, inputForm, todoObjFactory, overlayDiv, todayPageDiv, mainViewCenter, weekPageDiv };
+export { todoDatabase, inputForm, todoObjFactory, overlayDiv, todayPageDiv, mainViewCenter, weekPageDiv, projectDatabase, projectPageDiv };

@@ -23,17 +23,19 @@
 
             <div class="menu">
                 <ul class="navBar">
-                    <li class="homeBtn">
-                        <img src="./images/home.svg" alt="" class="icons">Home
-                    </li>
+                    <li class="homeBtn"> <img src="./images/home.svg" alt="" class="icons">Home </li>
                     <li class='todayBtn'> <img src="./images/today.svg" alt="" class='icons'> Today</li>
                     <li class='weekBtn'> <img src="./images/week.svg" alt="" class="icons"> This Week</li>
                 </ul>
                 <ul class="projectsBar">
-                    <li>project 1</li>
-                    <li>project 2</li>
-                    <li>project 3</li>
+                    <div>Projects</div> 
+                    <li class="newProjectBtn">Create new project</li>
                 </ul>
+                <form class="projectForm">
+                    <input type="text" class="projectInput" placeholder="Project Name" autofocus>
+                    <button type="button" class="submitProject">Add</button>
+                    <button type="button" class="cancel">Cancel</button>
+                </form>
             </div>
         </div>
 
@@ -55,6 +57,11 @@
                         <input type="text" id="description" name="description" placeholder="Description" required><br>
                         <input type="date" id="date" name="date"><br>
                         <!-- <input type="text" id="priority" name="priority" placeholder="Priority"><br> -->
+
+                        <select id="project" name="project">
+                            <!-- <option value="Gym">Gym</option>
+                            <option value="Work">Work</option> -->
+                        </select>
 
                         <select id="priority" name="priority">
                             <option value="high">High</option>
@@ -79,6 +86,7 @@
                 </div>
                 <div class="todayPage"></div>
                 <div class="weekPage"></div>
+                <div class="projectPage"></div>
             </div>
 
         </div>
