@@ -35,7 +35,8 @@ const projectModule = () => {
         console.table(projectDatabase);
 
         // .. and refresh page to remove all references to project
-        // obv this doesnt work now cause the projects are hardcoded, when i will include localstorage this should work
+        // obv this doesnt work now cause the projects are hardcoded, 
+        // when i will include localstorage this should work
         //location.reload();
 
         // if i dont wanna refresh page, i have to:

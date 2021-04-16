@@ -1,5 +1,3 @@
-// FIXIT
-// if i delete this line below i get a reference error, why?!
 import { projectDatabase } from './global';
 import { todo } from './todoModule';
 import { load } from './otherModules';
@@ -34,6 +32,8 @@ function firstLoad() {
     document.querySelector('.homeBtn').addEventListener('click', load.homePage);
     document.querySelector('.weekBtn').addEventListener('click', load.weekPage);
 
+
+    document.querySelector('.dropBtn').addEventListener('click', showDrop);
     document.querySelector('.newProjectBtn').addEventListener('click', projects.create);
     document.querySelector('.submitProject').addEventListener('click', projects.submit)
     // TOADD
@@ -62,3 +62,7 @@ function firstLoad() {
 };
 
 firstLoad();
+
+function showDrop () {
+    document.querySelector('.projectsBar').classList.toggle('show');
+}
