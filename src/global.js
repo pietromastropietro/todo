@@ -21,9 +21,9 @@ const todoDatabase = [
 
 const projectDatabase = ['Work', 'Gym'];
 
-const inputForm = document.querySelector('.addBox');
+const inputForm = document.querySelector('#todoForm');
 
-const overlayDiv = document.querySelector('.overlay');
+const overlayDiv = document.querySelector('#overlay');
 overlayDiv.addEventListener('click', todo.save);
 
 const todoObjFactory = (title, description, date, priority, project, todoId) => {
@@ -31,7 +31,7 @@ const todoObjFactory = (title, description, date, priority, project, todoId) => 
     return { title, description, date, priority, project, todoId };
 };
 
-const mainViewCenter = document.querySelector('.mainViewCenter');
+const mainViewCenter = document.querySelector('#homePage');
 const todayPageDiv = document.querySelector('.todayPage');
 const weekPageDiv = document.querySelector('.weekPage');
 const projectPageDiv = document.querySelector('.projectPage');

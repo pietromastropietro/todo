@@ -22,19 +22,23 @@ when i edit a todo date, i have to move that todo in the appropriate section.
 for ex if im in the today/week page and set a todo's date different from today/week
 date, i should move the todo to the appropriate section. same if i set a different project
 from the one im currently in.
+
+
+TODO 
+change all the mainviewCenter with 'homepage'
 */
 
 function firstLoad() {
-    document.querySelector('.newBtn').addEventListener('click', todo.create);
+    document.querySelector('#newTodoBtn').addEventListener('click', todo.create);
     document.querySelector('.submit').addEventListener('click', todo.submit);
 
-    document.querySelector('.todayBtn').addEventListener('click', load.todayPage);
-    document.querySelector('.homeBtn').addEventListener('click', load.homePage);
-    document.querySelector('.weekBtn').addEventListener('click', load.weekPage);
+    document.querySelector('#todayBtn').addEventListener('click', load.todayPage);
+    document.querySelector('#homeBtn').addEventListener('click', load.homePage);
+    document.querySelector('#weekBtn').addEventListener('click', load.weekPage);
 
 
-    document.querySelector('.dropBtn').addEventListener('click', showDrop);
-    document.querySelector('.newProjectBtn').addEventListener('click', projects.create);
+    document.querySelector('#dropBtn').addEventListener('click', showDrop);
+    document.querySelector('#newProjectBtn').addEventListener('click', projects.create);
     document.querySelector('.submitProject').addEventListener('click', projects.submit)
     // TOADD
     //document.querySelector('.cancel').addEventListener('click', function);
@@ -64,5 +68,5 @@ function firstLoad() {
 firstLoad();
 
 function showDrop () {
-    document.querySelector('.projectsBar').classList.toggle('show');
+    document.querySelector('#projectList').classList.toggle('show');
 }

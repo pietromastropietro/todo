@@ -8,65 +8,108 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./style.css">
     <title>DoMore.</title>
 </head>
 
 <body>
-    <div class="overlay"></div>
+    <div id="overlay"></div>
     <main>
-        <div class="sidebar">
-            <div class="logo">
-                <img src="./images/logo.svg" alt="" class='logoImg'>
-                <div class="logoText">DoMore.</div>
+        <div id="sidebar">
+            <div id="logo">
+                <img id='logoImg' src="./images/logo.svg" alt="logo-img">
+                <div id="logoText">DoMore.</div>
             </div>
 
-            <div class="menu">
-                <ul class="navBar">
-                    <li class="homeBtn"> <img src="./images/home.svg" alt="" class="icons">Home </li>
-                    <li class='todayBtn'> <img src="./images/today.svg" alt="" class='icons'> Today</li>
-                    <li class='weekBtn'> <img src="./images/week.svg" alt="" class="icons"> This Week</li>
+            <div id="sidebarMenu">
+                <ul id='btnList'>
+                    <li id="homeBtn"><img src="./images/home.svg" alt="" class="icons">Home</li>
+                    <li id='todayBtn'><img src="./images/today.svg" alt="" class='icons'>Today</li>
+                    <li id='weekBtn'><img src="./images/week.svg" alt="" class="icons">This Week</li>
+                    <li id="dropBtn"><img src="./images/today.svg" alt="" class='icons'>Projects</li> 
+                    <!-- <li><button id="dropBtn">Projects</button></li>  -->
                 </ul>
-                <!-- <ul class="projectsBar">
-                    <div>Projects</div> 
-                    <li class="newProjectBtn">Create new project</li>
-                </ul> -->
-                <div class="projectDropdown">
-                    <button class="dropBtn">Projects</button>
-                    <ul class="projectsBar">
-                        <li class="newProjectBtn">Create new project</li>
+                <div id="projectDropdown">
+                    <ul id="projectList">
+                        <li id="newProjectBtn">New project</li>
                     </ul>
                 </div>
-                <form class="projectForm">
-                    <input type="text" class="projectInput" placeholder="Project Name" autofocus>
+                <form id="projectForm">
+                    <input type="text" id="projectName" placeholder="Project Name" autofocus>
                     <button type="button" class="submitProject">Add</button>
                     <button type="button" class="cancel">Cancel</button>
                 </form>
             </div>
         </div>
 
-        <div class="mainWindow">
-            <div class="infoBar">
-                <input class="search" title="Cerca" type="text" placeholder="Search">
-                <!-- <div class="new">New</div> -->
+        <div id="mainContainer">
+
+            <div id="header">
+
+                <div id="infoBar">
+                    <input type="text" id="search" placeholder="Search">
+                    <!-- <div class="new">New</div> -->
+                </div>
+
+                <!-- <div class="mainView"> -->
+                <!-- <div class="mainViewHeader"> -->
+
+                <div id="pageTitle">All Todos</div>
+
+                <div id="newTodoBtnContainer">
+                    <div id="newTodoBtn">+</div>
+                </div>
+
+                <form id="todoForm">
+                    <input type="text" id="title" name="title" placeholder="Title" maxlength="20">
+                    <input type="text" id="description" name="description" placeholder="Description">
+                    <input type="date" id="date" name="date">
+                    <!-- <input type="text" id="priority" name="priority" placeholder="Priority"><br> -->
+
+                    <select id="project" name="project">
+                        <!-- <option value="Gym">Gym</option>
+                                <option value="Work">Work</option> -->
+                    </select>
+
+                    <select id="priority" name="priority">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                    <button type="button" class="submit">Add</button>
+                </form>
             </div>
-            <!-- change mainView in 'homepage' -->
+
+            <!-- </div> -->
+
+            <div id="pages">
+                <div id="homePage"></div>
+                <div class="todayPage"></div>
+                <div class="weekPage"></div>
+                <div class="projectPage"></div>
+            </div>
+
+        </div>
+
+        <!-- <div id="mainContainer">
+
+            <div id="infoBar">
+                <input type="text" id="search" placeholder="Search">
+            </div>
+
             <div class="mainView">
                 <div class="mainViewHeader">
                     <div class="sectionTitle">All Todos</div>
-                    <div class="newTodo">
-                        <div class="newBtn">+</div>
-                    </div>
+                    <div class="newTodo"> <div class="newBtn">+</div> </div>
 
                     <form class="addBox">
                         <input type="text" id="title" name="title" placeholder="Title" maxlength="20"><br>
                         <input type="text" id="description" name="description" placeholder="Description" required><br>
                         <input type="date" id="date" name="date"><br>
-                        <!-- <input type="text" id="priority" name="priority" placeholder="Priority"><br> -->
 
                         <select id="project" name="project">
-                            <!-- <option value="Gym">Gym</option>
-                            <option value="Work">Work</option> -->
                         </select>
 
                         <select id="priority" name="priority">
@@ -78,8 +121,19 @@
                         <button type="button" class="submit">Add</button>
                     </form>
                 </div>
-                <div class="mainViewCenter">
-                    <!-- <div class="todoElement" id="11">
+
+                <div id="homePage"></div>
+                <div class="todayPage"></div>
+                <div class="weekPage"></div>
+                <div class="projectPage"></div>
+            </div>
+
+        </div> -->
+    </main>
+
+    <script src="./main.js"></script>
+
+    <!-- <div class="todoElement" id="11">
                         <div contenteditable="true" spellcheck="false" class="todoTitle">Write your ideas</div>
                         <div class="todoCheck">O</div>
                         <div contenteditable="true" spellcheck="false" class="todoDescription">
@@ -89,16 +143,6 @@
                         <div class="todoDate">12/04/2020</div>
                         <div class="todoPriority">priority: high</div>
                     </div> -->
-                </div>
-                <div class="todayPage"></div>
-                <div class="weekPage"></div>
-                <div class="projectPage"></div>
-            </div>
-
-        </div>
-    </main>
-
-    <script src="./main.js"></script>
 </body>
 
 </html>
