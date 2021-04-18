@@ -75,7 +75,7 @@ const loadModule = () => {
     };
     const _display = (element) => {
         element.innerHTML = '';
-        element.style.display = 'unset';
+        element.style.display = 'flex';
     };
     return { todayPage, homePage, weekPage, projectPage };
 };

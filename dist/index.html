@@ -5,11 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
         rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
     <title>DoMore.</title>
 </head>
 
@@ -27,8 +33,7 @@
                     <li id="homeBtn"><img src="./images/home.svg" alt="" class="icons">Home</li>
                     <li id='todayBtn'><img src="./images/today.svg" alt="" class='icons'>Today</li>
                     <li id='weekBtn'><img src="./images/week.svg" alt="" class="icons">This Week</li>
-                    <li id="dropBtn"><img src="./images/today.svg" alt="" class='icons'>Projects</li> 
-                    <!-- <li><button id="dropBtn">Projects</button></li>  -->
+                    <li id="dropBtn"><img src="./images/today.svg" alt="" class='icons'>Projects</li>
                 </ul>
                 <div id="projectDropdown">
                     <ul id="projectList">
@@ -46,103 +51,59 @@
         <div id="mainContainer">
 
             <div id="header">
-
                 <div id="infoBar">
                     <input type="text" id="search" placeholder="Search">
-                    <!-- <div class="new">New</div> -->
                 </div>
-
-                <!-- <div class="mainView"> -->
-                <!-- <div class="mainViewHeader"> -->
-
-                <div id="pageTitle">All Todos</div>
-
-                <div id="newTodoBtnContainer">
-                    <div id="newTodoBtn">+</div>
-                </div>
-
-                <form id="todoForm">
-                    <input type="text" id="title" name="title" placeholder="Title" maxlength="20">
-                    <input type="text" id="description" name="description" placeholder="Description">
-                    <input type="date" id="date" name="date">
-                    <!-- <input type="text" id="priority" name="priority" placeholder="Priority"><br> -->
-
-                    <select id="project" name="project">
-                        <!-- <option value="Gym">Gym</option>
-                                <option value="Work">Work</option> -->
-                    </select>
-
-                    <select id="priority" name="priority">
-                        <option value="high">High</option>
-                        <option value="medium">Medium</option>
-                        <option value="low">Low</option>
-                    </select>
-
-                    <button type="button" class="submit">Add</button>
-                </form>
             </div>
 
-            <!-- </div> -->
+            <div id="mainSection">
+                <div id="overview">
 
-            <div id="pages">
-                <div id="homePage"></div>
-                <div class="todayPage"></div>
-                <div class="weekPage"></div>
-                <div class="projectPage"></div>
-            </div>
+                    <div id="pageTitle">Overview</div>
 
-        </div>
+                    <div id="newTodoBtnContainer">
+                        <div id="newTodoBtn">+</div>
+                    </div>
 
-        <!-- <div id="mainContainer">
-
-            <div id="infoBar">
-                <input type="text" id="search" placeholder="Search">
-            </div>
-
-            <div class="mainView">
-                <div class="mainViewHeader">
-                    <div class="sectionTitle">All Todos</div>
-                    <div class="newTodo"> <div class="newBtn">+</div> </div>
-
-                    <form class="addBox">
-                        <input type="text" id="title" name="title" placeholder="Title" maxlength="20"><br>
-                        <input type="text" id="description" name="description" placeholder="Description" required><br>
-                        <input type="date" id="date" name="date"><br>
-
-                        <select id="project" name="project">
-                        </select>
-
+                    <form id="todoForm">
+                        <input type="text" id="title" name="title" placeholder="Title" maxlength="20"
+                            autocomplete="off">
+                        <input type="text" id="description" name="description" placeholder="Description"
+                            autocomplete="off">
+                        <input type="date" id="date" name="date">
+                        <select id="project" name="project"></select>
                         <select id="priority" name="priority">
                             <option value="high">High</option>
                             <option value="medium">Medium</option>
                             <option value="low">Low</option>
                         </select>
-
                         <button type="button" class="submit">Add</button>
                     </form>
                 </div>
 
-                <div id="homePage"></div>
-                <div class="todayPage"></div>
-                <div class="weekPage"></div>
-                <div class="projectPage"></div>
+                <div id="pages">
+                    <div id="homePage"></div>
+                    <div class="todayPage"></div>
+                    <div class="weekPage"></div>
+                    <div class="projectPage"></div>
+                </div>
             </div>
 
-        </div> -->
+        </div>
     </main>
 
     <script src="./main.js"></script>
 
     <!-- <div class="todoElement" id="11">
-                        <div contenteditable="true" spellcheck="false" class="todoTitle">Write your ideas</div>
-                        <div class="todoCheck">O</div>
-                        <div contenteditable="true" spellcheck="false" class="todoDescription">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
-                            doeiuididunt ut labore et dolore magna aliqua.
-                        </div>
-                        <div class="todoDate">12/04/2020</div>
-                        <div class="todoPriority">priority: high</div>
-                    </div> -->
+            <div contenteditable="true" spellcheck="false" class="todoTitle">Write your ideas</div>
+            <div class="todoCheck">O</div>
+            <div contenteditable="true" spellcheck="false" class="todoDescription">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
+                doeiuididunt ut labore et dolore magna aliqua.
+            </div>
+            <div class="todoDate">12/04/2020</div>
+            <div class="todoPriority">priority: high</div>
+        </div> -->
 </body>
 
 </html>
