@@ -251,8 +251,8 @@ function newTodoDiv(parent, newTodoObj) {
     todoTitle.spellcheck = false;
     todoTitle.textContent = newTodoObj.title;
 
-    // const todoCheck = document.createElement('div');
-    // todoCheck.classList = 'todoCheck';
+    const todoCheck = document.createElement('div');
+    todoCheck.classList = 'todoCheck';
 
     const todoDescription = document.createElement('div');
     todoDescription.classList = 'todoDescription';
@@ -276,13 +276,18 @@ function newTodoDiv(parent, newTodoObj) {
     todoProject.classList = 'todoProject';
     todoProject.textContent = newTodoObj.project;
 
+    const todoExpand = document.createElement('div');
+    todoExpand.classList = 'todoExpand';
+    todoExpand.textContent = 'V';
+
     todoElement.appendChild(todoTitle);
-    // todoElement.appendChild(todoCheck);
+    todoElement.appendChild(todoCheck);
     todoElement.appendChild(todoDescription);
     todoElement.appendChild(todoDate);
     todoElement.appendChild(todoDeleteBtn);
     todoElement.appendChild(todoProject);
     todoElement.appendChild(todoPriority);
+    todoElement.appendChild(todoExpand);
 
     parent.prepend(todoElement);
 
@@ -313,6 +318,16 @@ function editEvents() {
     document.querySelectorAll('.todoDeleteBtn').forEach(itemm => {
         itemm.addEventListener('click', todo.deletee);
     });
+
+    document.querySelectorAll('.todoExpand').forEach(itemm => {
+        itemm.addEventListener('click', showDescription);
+    });
+}
+function showDescription (e) {
+    console.log(e);
+
+    document.querySelector(`#${e.srcElement.parentElement.id} > .todoDescription`).classList.toggle('showDescription');
+
 }
 
 export { todo, newTodoDiv };

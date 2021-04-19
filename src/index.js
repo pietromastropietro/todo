@@ -7,6 +7,9 @@ import { saveToLS, getFromLS } from './localstorage';
 
 /*
 TODO
+fix the scrollbar movement when creating new todos
+
+TODO
 add an overlay for the new todo and new project forms, so i can remove the add button.
 when the user clicks on the overlay the new todo/project is automatically created (if not empty)
 like what happens with the edit form
