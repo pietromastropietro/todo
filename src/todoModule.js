@@ -143,6 +143,8 @@ const todoModule = () => {
 
     const priorityInputOn = (e) => {
         todo.edit(e);
+        const index = _getIndex(todoIdEdit);
+        // console.log(todoDatabase[x].priority);
 
         const oldElement = document.querySelector(`#${todoIdEdit} > .todoPriority`);
 
@@ -163,9 +165,9 @@ const todoModule = () => {
         option3.value = 'low';
         option3.innerHTML = 'Low';
 
-        if (oldElement.innerHTML == 'high') {
+        if (todoDatabase[index].priority == 'high') {
             option1.selected = true;
-        } else if (oldElement.innerHTML == 'medium') {
+        } else if (todoDatabase[index].priority == 'medium') {
             option2.selected = true;
         } else {
             option3.selected = true;
@@ -181,22 +183,23 @@ const todoModule = () => {
     const _priorityInputOff = () => {
         const oldElement = document.querySelector(`#${todoIdEdit} > .todoPriority`);
 
-        if (oldElement.tagName == 'SELECT') {
+        const index = _getIndex(todoIdEdit);
 
-            const newElement = document.createElement('div');
-            newElement.classList = 'todoPriority';
-            newElement.innerHTML = oldElement.value;
+        if (oldElement.tagName == 'SELECT') {
+            const newElement = document.createElement('img');
+            newElement.classList = 'todoPriority todoPriorityIcon';
+            newElement.src = '../dist/images/flag.svg';
             oldElement.replaceWith(newElement);
 
             editEvents();
-
-            return newElement.innerHTML;
+            return oldElement.value;
         } else {
-            return oldElement.innerHTML;
+            return todoDatabase[index].priority;
         }
     };
     const chooseProject = (e) => {
         todo.edit(e);
+        const index = _getIndex(todoIdEdit);
 
         const oldElement = document.querySelector(`#${todoIdEdit} > .todoProject`);
 
@@ -211,7 +214,7 @@ const todoModule = () => {
             option.value = item;
             option.innerHTML = item;
 
-            if (item == oldElement.innerHTML) {
+            if (item == todoDatabase[index].project) {
                 option.selected = true;
             };
 
@@ -222,16 +225,19 @@ const todoModule = () => {
     const _saveProjectChoise = () => {
         const oldElement = document.querySelector(`#${todoIdEdit} > .todoProject`);
 
+        const index = _getIndex(todoIdEdit);
+
         if (oldElement.tagName == 'SELECT') {
-            const newElement = document.createElement('div');
-            newElement.classList = 'todoProject';
-            newElement.innerHTML = oldElement.value;
+            const newElement = document.createElement('img');
+            newElement.classList = 'todoProject todoProjectIcon';
+            // newElement.innerHTML = oldElement.value;
+            newElement.src = '../dist/images/project.svg';
             oldElement.replaceWith(newElement);
 
             editEvents();
-            return newElement.innerHTML;
+            return oldElement.value;
         } else {
-            return oldElement.innerHTML;
+            return todoDatabase[index].project;
         }
     };
 
@@ -264,21 +270,36 @@ function newTodoDiv(parent, newTodoObj) {
     todoDate.classList = 'todoDate';
     todoDate.textContent = newTodoObj.date;
 
-    const todoDeleteBtn = document.createElement('div');
+    // const todoDeleteBtn = document.createElement('div');
+    const todoDeleteBtn = document.createElement('img');
     todoDeleteBtn.classList = 'todoDeleteBtn';
-    todoDeleteBtn.textContent = 'Delete';
 
-    const todoPriority = document.createElement('div');
-    todoPriority.classList = 'todoPriority';
-    todoPriority.textContent = newTodoObj.priority;
+    // const todoDeleteIcon = document.createElement('img');
+    // todoDeleteIcon.classList = 'todoDeleteIcon';
+    // todoDeleteIcon.src = '../dist/images/delete.svg';
+    todoDeleteBtn.src = '../dist/images/delete.svg';
 
-    const todoProject = document.createElement('div');
-    todoProject.classList = 'todoProject';
-    todoProject.textContent = newTodoObj.project;
+    // todoDeleteBtn.append(todoDeleteIcon);
 
-    const todoExpand = document.createElement('div');
+    // const todoPriority = document.createElement('div');
+    // todoPriority.classList = 'todoPriority';
+    // todoPriority.textContent = newTodoObj.priority;
+    const todoPriority = document.createElement('img');
+    todoPriority.classList = 'todoPriority todoPriorityIcon' ;
+    todoPriority.src = '../dist/images/flag.svg';
+
+    // const todoProject = document.createElement('div');
+    // todoProject.classList = 'todoProject';
+    // todoProject.textContent = newTodoObj.project;
+    const todoProject = document.createElement('img');
+    todoProject.classList = 'todoProject todoProjectIcon';
+    todoProject.src = '../dist/images/project.svg';
+
+
+
+    const todoExpand = document.createElement('img');
     todoExpand.classList = 'todoExpand';
-    todoExpand.textContent = 'V';
+    todoExpand.src = '../dist/images/expand.svg';
 
     todoElement.appendChild(todoTitle);
     todoElement.appendChild(todoCheck);
@@ -324,10 +345,7 @@ function editEvents() {
     });
 }
 function showDescription (e) {
-    console.log(e);
-
     document.querySelector(`#${e.srcElement.parentElement.id} > .todoDescription`).classList.toggle('showDescription');
-
 }
 
 export { todo, newTodoDiv };

@@ -208,12 +208,12 @@ main {
     color: rgb(236, 236, 236);
     background-color: rgba(33,33,43,255);
     border: 1px solid rgba(255, 255, 255, 0.103);
-
-
     outline: none;
-    /* border: 1px solid rgba(0, 0, 0, 0.103); */
     padding: 10px 10px 10px 20px;
     border-radius: 20px;
+    width: 100%;
+    min-width: 100px;    
+    max-width: 300px;
 }
 
 #mainSection {    
@@ -292,9 +292,30 @@ main {
 #todoForm input:focus {
     border-bottom: 1px solid rgb(255, 255, 255);
 }
+/* form */
+#title, #project, #priority, .submit {
+    grid-area: 1 / 2 / 2 / 3;
+}
+#description {
+    grid-area: 2 / 2 / 3 / 3;
+}
+#date {
+    grid-area: 3 / 2 / 3 / 3;
+}
+#project, #priority, .submit {
+    justify-self: end;
+}
+#priority {
+    margin-right: 80px;
+}
+#project {
+    margin-right: 40px;
+}
+.submit {
+    width: 35px;
+}
 
 #pages {
-    /* overflow: scroll; */
     overflow: auto;
 }
 #pages:hover::-webkit-scrollbar-thumb {
@@ -308,7 +329,7 @@ main {
     flex-direction: column;
 }
 
-.todoElement {  
+.todoElement {
     transition: background 0.4s ease;
 
     background-color:rgba(33,33,43,1);
@@ -322,6 +343,7 @@ main {
     margin: 0 5px 10px 15px;
     border-radius: 20px;
     padding: 10px;
+
 }
 .edit {
     z-index: 2;
@@ -336,60 +358,53 @@ main {
     border-bottom: 1px solid rgb(255, 255, 255);
 }
 
-/* grid positioning */
 .todoCheck {
     grid-area: 1 / 1 / 4 / 2;
+    border: 3px solid cadetblue;
+    width: 25px;
+    height: 25px;
+    border-radius: 13px;
 }
 .todoTitle, .todoPriority, .todoDeleteBtn, .todoProject, .todoExpand {
     grid-area: 1 / 2 / 2 / 3;
 }
-.todoDescription {
-    grid-area: 2 / 2 / 3 / 3;
-    margin: 5px 0 12px 0;
-}
-.todoDate {
-    grid-area: 3 / 2 / 3 / 3;
-}
 .todoTitle, .todoDate, .todoDescription {
     margin-left: 10px
-}
-.todoPriority {
-    margin-right: 120px;
-}
-.todoDeleteBtn {
-    margin-right: 60px;
-}
-.todoProject {
-    margin-right: 20px;
 }
 .todoPriority, .todoDeleteBtn, .todoProject, .todoExpand {
     justify-self: end;
 }
-/* end */
-
-/* form grid positioning */
-#title, #project, #priority, .submit {
-    grid-area: 1 / 2 / 2 / 3;
-}
-#description {
+.todoDescription {
     grid-area: 2 / 2 / 3 / 3;
+    margin: 5px 0 12px 0;
+    display: none;
 }
-#date {
+.showDescription {
+    display: flex;
+}
+.todoDate {
     grid-area: 3 / 2 / 3 / 3;
 }
-#project, #priority, .submit {
-    justify-self: end;
+.todoPriority {
+    margin-right: 90px;
 }
-#priority {
-    margin-right: 100px;
+.todoDeleteBtn {
+    margin-right: 60px;
+    filter: invert(100%);
+    width: 18px;
+    height: 18px;
 }
-#project {
-    margin-right: 40px;
+.todoProject {
+    margin-right: 30px;
 }
-.submit {
-    width: 35px;
+.todoExpand, .todoPriorityIcon, .todoProjectIcon {
+    filter: invert(100%);
+    width: 18px;
+    height: 18px;
 }
-/* end */
+.todoPriority, .todoProject {
+    position: absolute;
+}
 
 /* font styling */
 .todoTitle, #title {
@@ -397,11 +412,9 @@ main {
     font-weight: 500;
 }
 .todoDescription, #description {
-    /* display: none; */
     color: rgba(255, 255, 255, 0.651);
     font-size: 18px;
     font-weight: 400;
-    /* overflow: scroll; */
 }
 .todoDate, #date {
     color: rgba(255, 255, 255, 0.651);
@@ -410,16 +423,14 @@ main {
 }
 /* end */
 
-.todoDescription {
-    display: none;
-}
-.showDescription {
-    display: flex;
-}
-.todoCheck {
-    border: 3px solid cadetblue;
-    width: 25px;
-    height: 25px;
-    border-radius: 13px;
-    /* margin: 3px; */
-}
+/* temp */
+ @keyframes expand {
+    0% {
+      transform: scaleY(0.4);
+      transform-origin: 100% 0%;
+    }
+    100% {
+      transform: scaleY(1);
+      transform-origin: 100% 0%;
+    }
+  }
